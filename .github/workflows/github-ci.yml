@@ -37,6 +37,8 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+      - name: Verify gcloud login
+        run: gcloud auth list 
       - name: Deploy to Google Cloud Run
         run: |
           gcloud run deploy client-meowwoof \
