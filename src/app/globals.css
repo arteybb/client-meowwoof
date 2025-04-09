@@ -3,24 +3,122 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --background-main: #facd7b;
+  --color-main: #b874db;
 }
-
+/* 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: kanit, sans-serif;
+  overflow-x: hidden;
+}
+
+.header{
+  background-color: var(--background-main);
+  overflow: hidden;
+}
+
+
+.btn-get-started{
+    background-color: var(--color-main);
+    width:130px;
+    height:40px;
+    border-radius: 30px;
+    filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, .25));
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.4s;
+    animation: text 1s;
+}
+
+
+.btn-get-started:hover{
+  transform: translateY(-5px);
+  transition: 0.4s;
+}
+
+.hand-left{
+  left:0px;
+  bottom:-20px;
+  rotate: 45deg;
+  transition: transform 0.4s ease;
+  animation: hand 1s;
+  animation: hand 1s forwards;
+}
+
+.hand-right{
+  right:0;
+ top:-40px;
+  rotate: -130deg;
+  transition: transform 0.4s ease;
+  animation: hand 1s;
+  animation: hand 1s forwards;
+}
+
+nav{
+  position: fixed;
+  width:100%;
+  height:50px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color:#fff;
+}
+
+.text-head-1{
+  animation: text 0.2s;
+
+}
+
+.text-head-2{
+  animation: text 0.4s;
+
+}
+
+.text-head-3{
+  animation: text 0.8s;
+
+}
+
+
+@keyframes hand{
+  from{
+    transform: translateY(0);
+    opacity: 0;
+  }
+  to{
+    transform: translateY(-50px);
+    opacity: 1;
+  }
+}
+
+@keyframes text{
+  from{
+    transform: scale(0);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
 }
