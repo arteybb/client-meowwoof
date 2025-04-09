@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      name: Check out code
       uses: actions/checkout@v4
-      name: Build the Docker image
+
+      name: Build docker image
       run: docker build . --file Dockerfile --tag artty123/client-meowwoof:$(date +%s)
