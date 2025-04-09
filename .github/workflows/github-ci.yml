@@ -39,7 +39,7 @@ jobs:
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
       - name: Google cloud login
         run: |
-          echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > gcloud-service-key.json
+          echo "${{ secrets.GCP_CREDENTIALS_JSON }}" | sed 's/\\n/\n/g' > gcloud-service-key.json
           gcloud auth activate-service-account --key-file=gcloud-service-key.json
       - name: Deploy to Google Cloud Run
         run: |
