@@ -37,6 +37,10 @@ jobs:
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
+      - name: Google cloud login
+        run: |
+          echo "${{ secrets.GCP_CREDENTIALS_JSON }}"
+          gcloud auth activate-service-account --key-file=gcloud-service-key.json
       - name: Deploy to Google Cloud Run
         run: |
           gcloud run deploy client-meowwoof \
