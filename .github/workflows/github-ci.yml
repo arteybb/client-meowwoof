@@ -45,7 +45,7 @@ jobs:
       - name: Deploy to Google Cloud Run
         run: |
           gcloud run deploy client-meowwoof \
-            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/client-meowwoof:latest \
+            --image artty123/client-meowwoof:latest \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated
