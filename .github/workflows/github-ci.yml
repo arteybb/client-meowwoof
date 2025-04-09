@@ -41,7 +41,6 @@ jobs:
       - name: Authenticate with Google Cloud using Service Account
         run: |
           echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > gcloud-service-key.json
-          ls -alh
           gcloud auth activate-service-account --key-file=gcloud-service-key.json
 
       - name: Deploy to Google Cloud Run
