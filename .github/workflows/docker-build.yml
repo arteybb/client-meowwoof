@@ -1,0 +1,16 @@
+name: Build and Deploy Docker
+
+on:
+  push:
+    branches:
+      main
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      uses:actions/checkout@v4
+      name:Build the Docker image
+      run: docker build . --file Dockerfile --tag artty123/client-meowwoof:$(date +%s)
