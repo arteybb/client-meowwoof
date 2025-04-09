@@ -23,7 +23,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build docker image
-        run: docker build . --file Dockerfile --tag artty123/client-meowwoof:$(date +%s)
+        run: docker build . --file Dockerfile --tag artty123/client-meowwoof
 
       - name: Push docker image to Docker Hub
         run: docker push artty123/client-meowwoof:$(date +%s)
