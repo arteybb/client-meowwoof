@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-docker-image:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,19 +30,17 @@ jobs:
 
   deploy-google-cloud:
     runs-on: ubuntu-latest
-    needs: build-docker-image
+    needs: build
     steps:
       - name: Set up Google Cloud credentials
         uses: google-github-actions/setup-gcloud@v2
         with:
           project_id: ${{ secrets.GCP_PROJECT_ID }}
           credentials_json: ${{ secrets.GCP_CREDENTIALS_JSON }}
-
-      - name: Authenticate with Google Cloud using Service Account
+      - name: Google cloud login
         run: |
-          echo "${{ secrets.GCP_CREDENTIALS_JSON }}" > gcloud-service-key.json
+          echo ${{ secrets.GCP_CREDENTIALS_JSON }} > gcloud-service-key.json
           gcloud auth activate-service-account --key-file=gcloud-service-key.json
-
       - name: Deploy to Google Cloud Run
         run: |
           gcloud run deploy client-meowwoof \
